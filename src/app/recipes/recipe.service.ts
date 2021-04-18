@@ -7,15 +7,15 @@ import {ShoppingListService} from '../shopping-list/shopping-list.service';
 export class RecipeService {
 
   private recipes: Recipe[] = [
-    new Recipe('A Test Recipe',
-      'A Simple Test',
+    new Recipe('Yummy Recipe',
+      'A Recipe',
       'https://reluctantentertainer.com/wp-content/uploads/2019/02/Easy-Homemade-Chili-Recipe-6.jpg',
       [
         new Ingredient('Meat', 1),
         new Ingredient('French Fries', 20)
       ]),
-    new Recipe('Another Test Recipe',
-      'A Simple Test',
+    new Recipe('Delicious Recipe',
+      'The second recipe',
       'https://reluctantentertainer.com/wp-content/uploads/2019/02/Easy-Homemade-Chili-Recipe-6.jpg',
       [
         new Ingredient('Buns', 4),
