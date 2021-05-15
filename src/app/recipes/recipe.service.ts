@@ -2,11 +2,12 @@ import { Injectable} from '@angular/core';
 import {Recipe} from './recipe.model';
 import {Ingredient} from '../shared/ingredient.model';
 import {ShoppingListService} from '../shopping-list/shopping-list.service';
+import {Subject} from 'rxjs';
 
 @Injectable()
 export class RecipeService {
-
-  private recipes: Recipe[] = [
+  recipesChanged = new Subject<Recipe[]>();
+  public recipe: Recipe[] = [
     new Recipe('Yummy Recipe',
       'A Recipe',
       'https://reluctantentertainer.com/wp-content/uploads/2019/02/Easy-Homemade-Chili-Recipe-6.jpg',
@@ -18,7 +19,7 @@ export class RecipeService {
       'The second recipe',
       'https://reluctantentertainer.com/wp-content/uploads/2019/02/Easy-Homemade-Chili-Recipe-6.jpg',
       [
-        new Ingredient('Buns', 4),
+        new Ingredient('', 4),
         new Ingredient('Meat', 1)
       ])
   ];
@@ -27,13 +28,28 @@ export class RecipeService {
   }
 
   getRecipe() {
-    return this.recipes.slice();
+    return this.recipe.slice();
   }
 
   getRecipes(index: number){
-    return this.recipes.slice()[index];
+    return this.recipe[index];
   }
   addIngredientsToShoppingList(ingredients: Ingredient[]){
     this.slService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe){
+    this.recipe.push(recipe);
+    this.recipesChanged.next(this.recipe.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipe){
+    this.recipe[index] = newRecipe;
+    this.recipesChanged.next(this.recipe.slice());
+  }
+
+  deleteRecipe(index: number){
+    this.recipe.slice(index, 1);
+    this.recipesChanged.next(this.recipe.slice());
   }
 }
