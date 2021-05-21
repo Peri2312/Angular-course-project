@@ -1,18 +1,27 @@
 <div class="row">
   <div class="col-xs-12">
-    <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-responsive" style="max-height: 500px;">
+    <img
+      [src]="recipe.imagePath"
+      alt="{{ recipe.name }}"
+      class="img-responsive"
+      style="max-height: 300px;">
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <h1>{{recipe.name}}</h1>
+    <h1>{{ recipe.name }}</h1>
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <div class="btn-group"
-    appDropdown>
-      <button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
+    <div
+      class="btn-group"
+      appDropdown>
+      <button
+        type="button"
+        class="btn btn-primary dropdown-toggle">
+        Manage Recipe <span class="caret"></span>
+      </button>
       <ul class="dropdown-menu">
         <li><a (click)="onAddToShoppingList()" style="cursor: pointer;">To Shopping List</a></li>
         <li><a style="cursor: pointer;" (click)="onEditRecipe()">Edit Recipe</a></li>
@@ -23,7 +32,7 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    {{recipe.description}}
+    {{ recipe.description }}
   </div>
 </div>
 <div class="row">
@@ -37,6 +46,3 @@
     </ul>
   </div>
 </div>
-
-
-
